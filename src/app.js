@@ -1,24 +1,29 @@
-const express = require('express');
-const swaggerUI = require('swagger-ui-express');
-const path = require('path');
-const YAML = require('yamljs');
-const userRouter = require('./resources/users/user.router');
+const yargs = require('yargs');
+const notes = require('./notes');
 
-const app = express();
-const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
+// Customize yargs version
+yargs.version('1.1.0');
 
-app.use(express.json());
-
-app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
-
-app.use('/', (req, res, next) => {
-  if (req.originalUrl === '/') {
-    res.send('Service is running!');
-    return;
+// Create add command
+yargs.command({
+  command: 'add',
+  describe: 'Add a new note',
+  builder: {
+    title: {
+      describe: 'Note title',
+      demandOption: true,
+      type: 'string'
+    },
+    body: {
+      describe: 'Note body',
+      demandOption: true,
+      type: 'string'
+    }
+  },
+  handler: argv => {
+    console.log("Hello!");
+    notes.addNote(argv.title, argv.body);
   }
-  next();
 });
 
-app.use('/users', userRouter);
-
-module.exports = app;
+yargs.parse();
