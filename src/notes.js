@@ -2,7 +2,7 @@ const fs = require('fs');
 const chalk = require('chalk');
 
 const addNote = (title, body) => {
-  console.log("Hello!")
+  console.log('Hello!');
   const notes = loadNotes();
   const duplicateNote = notes.find(note => note.title === title);
 
@@ -27,7 +27,7 @@ const loadNotes = () => {
   try {
     const dataBuffer = fs.readFileSync('input.txt');
     const dataJSON = dataBuffer.toString();
-      console.log(dataJSON);
+    console.log(dataJSON);
     return JSON.parse(dataJSON);
   } catch (e) {
     return [];
