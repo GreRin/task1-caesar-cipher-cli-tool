@@ -5,9 +5,9 @@ const readFile = () => {
   console.log(notes);
 };
 
-const writeFile = (chunk) => {
-  console.log('Write file!')
-}
+const writeFile = chunk => {
+  console.log('Write file!');
+};
 
 const loadNotes = () => {
   try {
@@ -20,6 +20,6 @@ const loadNotes = () => {
 };
 
 module.exports = {
-  readFile: readFile,
-  writeFile: writeFile
+  readFile,
+  writeFile
 };

@@ -6,7 +6,7 @@ program.version('0.0.1').description('Caesar cipher CLI tool');
 
 const notes = require('./src/notes');
 const support = require('./src/support');
-const std = require("./src/std");
+const std = require('./src/std');
 
 // Create an options for cli
 program
@@ -33,9 +33,11 @@ options.shift === undefined
   ? console.log(chalk.red.inverse('Write INTEGER shift!'))
   : '';
 
-//If the input file is missed - use 'stdin' as an input source
+// If the input file is missed - use 'stdin' as an input source
 if (options.input === undefined) {
-    fs.readdir('doc', (err, data) => {
-        data.indexOf('input.txt') !== -1 ? notes.readFile() : std.consoleInput(options);
-    })
+  fs.readdir('doc', (err, data) => {
+    data.indexOf('input.txt') !== -1
+      ? notes.readFile()
+      : std.consoleInput(options);
+  });
 }
