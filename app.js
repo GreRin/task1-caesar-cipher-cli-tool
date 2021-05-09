@@ -23,14 +23,5 @@ console.log(options);
 support.optionErrorMsg(options);
 
 // If the input file is missed - use 'stdin' as an input source
-if (options.input === undefined) {
-  fs.readdir('doc', (err, data) => {
-    if (err) {
-      console.log(chalk.red.inverse('The directory `doc` does not exist!'));
-      return;
-    }
-    data.indexOf('input.txt') !== -1
-      ? notes.readFile(options)
-      : std.consoleInput(options);
-  });
-}
+options.input === undefined ? std.consoleInput(options) : notes.readFile(options);
+

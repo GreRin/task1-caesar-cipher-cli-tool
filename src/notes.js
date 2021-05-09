@@ -1,12 +1,14 @@
 const fs = require('fs');
+const cipher = require('./encode-decode');
 
 const readFile = options => {
-  const notes = loadNotes();
-  console.log(notes);
+  const chunk = loadNotes();
+  let outputStr = cipher.encodeDecode(chunk, options);
+  writeFile(chunk, outputStr);
 };
 
-const writeFile = chunk => {
-  console.log('Write file!');
+const writeFile = (chunk, outputStr)  => {
+  fs.appendFileSync('./doc/output.txt', 'input: ' + chunk + 'output: ' + outputStr);
 };
 
 const loadNotes = () => {
@@ -15,7 +17,7 @@ const loadNotes = () => {
     const dataJSON = dataBuffer.toString();
     return dataJSON;
   } catch (e) {
-    return [];
+    return e;
   }
 };
 

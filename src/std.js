@@ -6,15 +6,18 @@ const consoleInput = options => {
   process.stdin.setEncoding('utf8');
   process.stdin.on('readable', () => {
     let chunk = process.stdin.read();
+    let outputStr = '';
     if (chunk !== null) {
       fs.readdir('doc', (err, data) => {
-        // If the output file is missed - use stdout as an output destination.
+        // If the output file is missed - use stdout as an output destination else write in file
         if (data.indexOf('output.txt') !== -1) {
-          chunk = cipher.encodeDecode(chunk, options);
-          notes.writeFile(chunk);
+          outputStr = cipher.encodeDecode(chunk, options);
+          notes.writeFile(chunk, outputStr);
+        } else {
+          outputStr = cipher.encodeDecode(chunk, options);
+          process.stdout.write(outputStr);
         }
-        chunk = cipher.encodeDecode(chunk, options);
-        process.stdout.write(chunk);
+        chunk = process.stdin.read();
       });
     }
   });
