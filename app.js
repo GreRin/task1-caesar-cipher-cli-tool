@@ -1,5 +1,3 @@
-const fs = require('fs');
-const chalk = require('chalk');
 const { Command } = require('commander');
 const program = new Command();
 program.version('0.0.1').description('Caesar cipher CLI tool');
@@ -23,5 +21,6 @@ console.log(options);
 support.optionErrorMsg(options);
 
 // If the input file is missed - use 'stdin' as an input source
-options.input === undefined ? std.consoleInput(options) : notes.readFile(options);
-
+options.input === undefined
+  ? std.consoleInput(options)
+  : notes.readFile(options);
