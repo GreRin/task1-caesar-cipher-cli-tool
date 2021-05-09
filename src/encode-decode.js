@@ -1,6 +1,8 @@
 const encodeDecode = (chunk, options) => {
   // alphabet letters amount
+  const steps = Number(options.shift);
   const n = 26;
+  if (steps < 0) return encodeDecode(chunk, steps + 26);
   return chunk
     .split('')
     .map(c => {
@@ -10,12 +12,12 @@ const encodeDecode = (chunk, options) => {
           code >= 65 && code <= 90 ? 65 : code >= 97 && code <= 122 ? 97 : 0;
         if (options.action === 'encode') {
           return String.fromCharCode(
-            ((code - shift + Number(options.shift)) % n) + shift
+            ((code - shift + steps) % n) + shift
           );
         }
         if (options.action === 'decode') {
           return String.fromCharCode(
-            ((code - shift - Number(options.shift)) % n) + shift
+            ((code - shift - steps + n) % n) + shift
           );
         }
       }

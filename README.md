@@ -18,7 +18,7 @@ npm install
 ## Running application from command line
 
 ```
-$ node my_caesar_cli -a encode -s 7 -i "./input.txt" -o "./output.txt"
+$ node my_caesar_cli -a encode -s 7 -i "./doc/input.txt" -o "./doc/output.txt"
 ```
 
 # Description
