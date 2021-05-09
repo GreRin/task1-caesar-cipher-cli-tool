@@ -35,7 +35,7 @@ CLI tool accept 4 options (short alias and full name):
 1. _-a (--action)_ is **encode**
 
 ```
-$ node my_caesar_cli -a encode -s 7 -i "./input.txt" -o "./output.txt"
+$ node my_caesar_cli -a encode -s 7 -i "./doc/input.txt" -o "./doc/output.txt"
 ```
 > input.txt
 > `This is secret. Message about "_" symbol!`
@@ -44,7 +44,7 @@ $ node my_caesar_cli -a encode -s 7 -i "./input.txt" -o "./output.txt"
 > `Aopz pz zljyla. Tlzzhnl hivba "_" zftivs!`
 
 ```
-$ node my_caesar_cli --action encode --shift 7 --input plain.txt --output encoded.txt
+$ node my_caesar_cli --action encode --shift 7 --input "./doc/input.txt" --output "./doc/output.txt"
 ```
 > plain.txt
 > `This is secret. Message about "_" symbol!`
@@ -56,7 +56,7 @@ $ node my_caesar_cli --action encode --shift 7 --input plain.txt --output encode
    _Decoding encoded initial string with the same -s(--shift) number produces the initial string._
 
 ```
-$ node my_caesar_cli --action decode --shift 7 --input encoded.txt --output plain.txt
+$ node my_caesar_cli --action decode --shift 7 --input "./doc/input.txt" --output "./doc/output.txt"
 ```
 
 > encoded.txt

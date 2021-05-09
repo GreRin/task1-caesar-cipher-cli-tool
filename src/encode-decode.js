@@ -1,7 +1,6 @@
 const encodeDecode = (chunk, options) => {
-  // alphabet letters amount
   const steps = Number(options.shift);
-  const n = 26;
+  const n = 26;  // alphabet letters amount
   if (steps < 0) return encodeDecode(chunk, steps + 26);
   return chunk
     .split('')
