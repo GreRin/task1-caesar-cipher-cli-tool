@@ -10,8 +10,8 @@ const std = require('./src/std');
 
 // Create an options for cli
 program
-  .option('-a, --action <type>', 'an action encode/decode', false)
-  .option('-s, --shift <shift>', 'a shift', '0')
+  .option('-a, --action <type>', 'an action encode/decode')
+  .option('-s, --shift <shift>', 'a shift')
   .option('-i, --input <input-file>', 'an output file')
   .option('-o, --output <output-file>', 'an output file')
   .parse(process.argv);
@@ -19,25 +19,18 @@ program
 const options = program.opts();
 
 console.log(options);
-// Check if options exist
-options.action === undefined
-  ? console.log(chalk.red.inverse(support.optionErrorMsg('ACTION')))
-  : '';
-options.action !== 'encode' && options.action !== 'decode'
-  ? console.log(chalk.red.inverse('Write correct type for ACTION!'))
-  : '';
-options.shift === undefined
-  ? console.log(chalk.red.inverse(support.optionErrorMsg('SHIFT')))
-  : '';
-!Number.isInteger(Number(options.shift))
-  ? console.log(chalk.red.inverse('Write INTEGER shift!'))
-  : '';
+// Check if options exist, if type of actions is correct, if shift value is integer
+support.optionErrorMsg(options);
 
 // If the input file is missed - use 'stdin' as an input source
 if (options.input === undefined) {
   fs.readdir('doc', (err, data) => {
+    if(err) {
+      console.log(chalk.red.inverse('The directory `doc` does not exist!'));
+      return
+    };
     data.indexOf('input.txt') !== -1
-      ? notes.readFile()
+      ? notes.readFile(options)
       : std.consoleInput(options);
   });
 }

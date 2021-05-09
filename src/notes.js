@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const readFile = () => {
+const readFile = (options) => {
   const notes = loadNotes();
   console.log(notes);
 };
