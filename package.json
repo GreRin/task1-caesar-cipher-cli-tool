@@ -33,11 +33,6 @@
       "./test/setup.js"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.js": [
       "npm run lint",
@@ -45,26 +40,22 @@
     ]
   },
   "dependencies": {
-    "cross-env": "6.0.3",
-    "dotenv": "8.2.0",
-    "express": "4.17.1",
-    "swagger-ui-express": "4.1.2",
-    "uuid": "3.3.3",
-    "yamljs": "0.3.0"
+    "chalk": "^4.1.1",
+    "commander": "^7.2.0",
+    "process": "^0.11.10",
+    "validator": "^13.6.0",
+    "yargs": "^17.0.1"
   },
   "devDependencies": {
+    "debug": "4.1.1",
     "eslint": "6.7.2",
     "eslint-config-prettier": "6.7.0",
     "eslint-plugin-node": "10.0.0",
     "eslint-plugin-prettier": "3.1.1",
-    "husky": "3.1.0",
-    "lint-staged": "9.5.0",
-    "nodemon": "2.0.2",
-    "prettier": "1.19.1",
-    "chai": "4.2.0",
-    "debug": "4.1.1",
-    "dirty-chai": "2.0.1",
     "jest": "24.9.0",
+    "lint-staged": "9.5.0",
+    "nodemon": "^2.0.7",
+    "prettier": "1.19.1",
     "supertest": "4.0.2"
   }
 }
