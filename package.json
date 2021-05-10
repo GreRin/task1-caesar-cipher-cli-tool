@@ -42,6 +42,7 @@
   "dependencies": {
     "chalk": "^4.1.1",
     "commander": "^7.2.0",
+    "process": "^0.11.10",
     "validator": "^13.6.0",
     "yargs": "^17.0.1"
   },

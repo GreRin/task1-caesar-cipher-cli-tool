@@ -1,4 +1,3 @@
-input: This is secret. Message about "_" symbol!
-output: Aopz pz zljyla. Tlzzhnl hivba "_" zftivs!
+
 input: Aopz pz zljyla. Tlzzhnl hivba "_" zftivs!
 output: This is secret. Message about "_" symbol!

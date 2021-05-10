@@ -21,6 +21,8 @@ console.log(options);
 support.optionErrorMsg(options);
 
 // If the input file is missed - use 'stdin' as an input source
-options.input === undefined
-  ? std.consoleInput(options)
-  : notes.readFile(options);
+if (options.input === undefined) {
+  std.consoleInput(options);
+} else {
+  notes.readFile(options);
+}

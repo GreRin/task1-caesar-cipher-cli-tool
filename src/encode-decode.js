@@ -7,7 +7,12 @@ const encodeDecode = (chunk, options) => {
     .map(c => {
       if (c.match(/[A-Za-z]/i)) {
         const code = c.charCodeAt();
-        const shift = code >= 65 && code <= 90 ? 65 : code >= 97 && code <= 122 ? 97 : 0;
+        let shift = 0;
+        if (code >= 65 && code <= 90) {
+          shift = 65;
+        } else if (code >= 97 && code <= 122) {
+          shift = shift = 97;
+        }
         if (options.action === 'encode') {
           return String.fromCharCode(((code - shift + steps) % n) + shift);
         }
